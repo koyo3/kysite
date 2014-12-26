@@ -6,15 +6,14 @@
       {% if is_login %}Login
       {% elif is_home %}{{ site.author }}
       {% elif is_tag %}{{ tag }}
-      {% elif post %}{{ post.title }}
+      {% elif post %}{{ post.content.split('\n')[0]|striptags }}
       {% endif %}
       | {{ site.name }}
     </title>
 
     {{ header_meta }}
-
+    <meta name="robots" content="noindex, nofollow, noarchive" />
     <link href="{{ assets('css/style.css') }}" rel="stylesheet">
-
     <!--[if IE 7]>
       <link href="http://postach.io/static/themes/_assets/fontawesome/css/font-awesome-ie7.min.css" rel="stylesheet">
     <![endif]-->
@@ -76,7 +75,7 @@
                   <li><a href="/">Blog</a></li>
                   {% if pages %}
                   {% for page in pages %}
-                  <li><a href="{{ page.permalink }}" class="{{ set_active(page.permalink) }}">{{ page.title }}</a></li>
+                  <li><a href="{{ page.permalink }}" class="{{ set_active(page.permalink) }}">{{ post.content.split('\n')[0]|striptags }}</a></li>
                   {% endfor %}
                   {% endif %}
                 </ul>
@@ -106,11 +105,17 @@
           {% for post in posts %}
           <div class="row post">
             <div class="span6">
-              <h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
-              <p class="muted">Posted on {{ post.created_at|format_date }}</p>
+              <h2><a href="{{ post.permalink }}">{{ post.content.split('\n')[0]|striptags }}</a></h2>
+              <p class="muted">Posted on {{ post.created_at|format_date("%y/%m/%d") }}</p>
 
               <div class="post-content" data-type-cleanup="true">
-                {{ post.content }}
+                {% if post.content.count('--more--') > 0 %}
+                {% set moret = post.content.split('\n')[1::]|join %}
+                {{ post.content.split('\n')[1::]|join|truncate(moret.find('--more--'),true,'\n') }}
+                <span><a href="{{ post.permalink }}">More &rarr;</a></span>
+                {% else %}
+                {{ post.content.split('\n')[1::]|join }}
+                {% endif %}
               </div>
 
             </div>
@@ -134,11 +139,11 @@
         {% elif is_post %}
 
           <div class="post">
-            <h1>{{ post.title }}</h1>
-            <p class="muted">Posted on {{ post.created_at|format_date }}</p>
+            <h1>{{ post.content.split('\n')[0]|striptags }}</h1>
+            <p class="muted">Posted on {{ post.created_at|format_date("%Y/%m/%d") }}</p>
 
             <div class="post-content" data-type-cleanup="true">
-              {{ post.content }}
+              {{ post.content.split('\n')[1::]|join|replace('--more--','\n') }}
             </div>
 
             {{ theme.social.bar }}
@@ -218,9 +223,9 @@
         {% elif is_page %}
 
           <div class="post">
-            <h1>{{ page.title }}</h1>
+            <h1>{{ page.content.split('\n')[0]|striptags }}</h1>
             <div class="post-content" data-type-cleanup="true">
-            {{ page.content }}
+            {{ page.content.split('\n')[1::]|join }}
             </div>
           </div>
 
@@ -274,9 +279,13 @@
             </div>
 
             {% if site.tags %}
+                            
+        </div>
             <ul class="tags">
               {% for tag in site.tags %}
-                <li><a href="/tag/{{ tag.name }}">#{{ tag.name }}</a></li>
+                {% if tag.name.find("category") == -1 %}
+                <li><a href="/tag/{{ tag.name }}">#{{ tag.name}} ({{ tag.count }})</a></li>
+                {% endif  %}
               {% endfor %}
             </ul>
             {% endif %}
@@ -290,10 +299,12 @@
             &copy; <a href="/">{{ site.name }}</a>. Powered by <a href="http://postach.io" target="_blank">Postach.io</a>
             {% if not is_login %}
               <ul class="inline pull-right">
-                <li><a href="/">Blog</a></li>
+                <li><a href="/">Home</a></li>
                 {% if pages %}
                 {% for page in pages %}
-                <li><a href="{{ page.permalink }}" class="{{ set_active(page.permalink) }}">{{ page.title }}</a></li>
+                  {% if page.title.find("memo") == -1 %}
+                  <li><a href="{{ page.permalink }}" class="{{ set_active(page.permalink) }}">{{ page.content.split('\n')[0]|striptags }}</a></li>
+                  {% endif %}
                 {% endfor %}
                 {% endif %}
               </ul>
