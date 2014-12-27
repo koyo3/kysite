@@ -594,6 +594,8 @@ footer {
   }
 }
 body > .container{margin-left:160px;}
+.offset1 {
+margin-left: 20px;
 .login {
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
