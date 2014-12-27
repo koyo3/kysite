@@ -83,6 +83,16 @@
                   {% endif %}
                 </ul>
               </div>
+<!--nav追加-->
+              <div id="nav2">
+                {% if site.tags %}
+                {% for tag in site.tags %}
+                  {% if tag.name.find("category") == -1 %}
+                  <a href="/tag/{{ tag.name }}">#{{ tag.name}} ({{ tag.count }})</a>
+                  {% endif  %}
+                {% endfor %}
+                {% endif %}
+              </div>
               {% endif %}
 
             </div>
