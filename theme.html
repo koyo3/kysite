@@ -97,10 +97,33 @@
 
           {% if is_tag %}
           <div class="row">
-            <h4>Showing all posts tagged #{{ tag }}:</h4>
+            <h4>Tag: {{ tag|replace('category-',' ') }}</h4>
             <hr />
           </div>
           {% endif %}
+                {% if is_tag %}<div id="content">{% endif %}
+                {% for post in posts %}
+                {% if is_tag %}
+                <div class="tag-thumbnail">
+                    <h3 class="tagtitle"><a href="{{ post.permalink }}">{{ post.content.split('\n')[0]|striptags }}</a></h3>
+                        {% for photo in post.photos %}
+                        {% if photo and loop.index == 1 %}
+                        <div class="post-image">
+                            <a href="{{ post.permalink }}">
+                                <img  src="{{ photo.square_75 }}" height="75px" width="75px" alt="Featured Photo" />
+                            </a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% if is_tag and not post.photos %}
+                          {% if post.content|striptags|wordcount > 0 %}
+                          <div class="taglistmemo"><a class="postlink" href="{{ post.permalink }}"></a>
+                          <p>{{ post.content.split('\n')[1::]|join|striptags|truncate(20,true) }}</p>
+                          <a href="{{ post.permalink }}">More &rarr;</a></div>
+                          {% endif %}
+                        {% endif %}
+                </div>
+                {% endif %}
 
           {% if posts %}
           {% for post in posts %}
