@@ -264,6 +264,7 @@ a.brand:visited:hover {
 .nav li a.active {
   font-weight: bold;
 }
+,offset1{margin-left:1.5em;}
 h1,
 h2,
 h3,
