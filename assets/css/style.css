@@ -207,7 +207,6 @@ p {
   background: -webkit-gradient(linear, left top, left bottom, from(#5c5a62), to(#447));
   background-repeat:repeat-y;
   background-image: none;
-  background-repeat: no-repeat;
   filter: none;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
