@@ -94,7 +94,7 @@
         <div class="span6 offset1">
 
         {% if is_home or is_tag %}
-
+        {% if posts %}
           {% if is_tag %}
           <div class="row">
             <h4>Tag: {{ tag|replace('category-',' ') }}</h4>
@@ -112,16 +112,16 @@
                 </div>
                 {% endif %}
                 {% endfor %}
-              {% if is_tag and not post.photos %}
+                {% if is_tag and not post.photos %}
                 {% if post.content|striptags|wordcount > 0 %}
                 <div class="taglistmemo"><a class="postlink" href="{{ post.permalink }}"></a>
                 <p>{{ post.content.split('\n')[1::]|join|striptags|truncate(20,true) }}</p>
                 <a href="{{ post.permalink }}">More &rarr;</a></div>
                 {% endif %}
-              {% endif %}
+                {% endif %}
               </article>
-            </div>
             {% endfor %}
+            </div>
           {% endif %}
 
           {% if not is_tag %}
