@@ -109,7 +109,7 @@
             {% if is_tag %}
             <div id="content">
               {% for post in posts %}
-                <h3 class="title"><a href="{{ post.permalink }}">{{ post.content.split('\n')[0]|striptags }}</a></h3>
+                <h4 class="title"><a href="{{ post.permalink }}">{{ post.content.split('\n')[0]|striptags }}</a></h4>
                   {% for photo in post.photos %}
                   {% if photo and loop.index == 1 %}
                   <div class="post-image">
