@@ -593,6 +593,7 @@ footer {
   body {
   }
 }
+body > .container{margin-left:160px;}
 .login {
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
