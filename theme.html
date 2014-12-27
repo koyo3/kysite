@@ -144,7 +144,7 @@
             <p class="muted">Posted on {{ post.created_at|format_date("%y/%m/%d") }}</p>
 
             <div class="post-content" data-type-cleanup="true">
-              {{ post.content.split('\n')[1::]|join }}
+              {{ post.content.split('\n')[1::]|join|replace('--more--','\n') }}
             </div>
 
             {{ theme.social.bar }}
@@ -236,7 +236,6 @@
         {% if not is_login %}
           <span class="span3 offset1">
             <div class="bio">
-              <img class="avatar" src="{{ site.avatar }}" alt="{{ site.author }}" />
               <p>{{ site.bio }}</p>
               <p>{{ theme.social.follow }}</p>
               <ul class="unstyled social">
