@@ -102,11 +102,10 @@
           </div>
           {% endif %}
 
-          {% if post %}
+          {% if posts %}
             {% if is_tag %}
             <div id="content">
               {% for post in posts %}
-                <article itemscope itemtype="http://schema.org/Article" class="itembox line">
                 <h3 class="title"><a href="{{ post.permalink }}">{{ post.content.split('\n')[0]|striptags }}</a></h3>
                   {% for photo in post.photos %}
                   {% if photo and loop.index == 1 %}
@@ -124,7 +123,6 @@
                   <a href="{{ post.permalink }}">More &rarr;</a></div>
                   {% endif %}
                   {% endif %}
-                </article>
               {% endfor %}
             </div>
             {% endif %}
