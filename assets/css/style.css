@@ -202,6 +202,8 @@ p {
   top:0;
   width:160px;
   height:100%;
+  float:none;
+ margin-left:10px;
 }
 .navbar-inner {
   position: fixed;
@@ -264,7 +266,7 @@ a.brand:visited:hover {
 .nav li a.active {
   font-weight: bold;
 }
-.offset1 {margin-left:1.5em;}
+.offset1 {margin-left:10px;}
 h1,
 h2,
 h3,
