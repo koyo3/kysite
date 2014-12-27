@@ -199,9 +199,7 @@ p {
   -webkit-box-shadow: 0;
   border-bottom: 0;
   position: fixed;
-  top:0;
-  width:160px;
-  height:100%;
+
   float:none;
 }
 .row {margin-left:0;}
