@@ -655,3 +655,15 @@ footer {
   line-height: 10pt;
   padding: 7px;
 }
+hr{border-style:solid;border-color:#cacaca;border-width:1px;margin:0.7em 0;-moz-box-sizing:content-box;box-sizing:content-box;}
+h2 + hr {border:dashed #cacaca 1px;margin:20px 0;}
+.post .post-content img{max-width:100%;height:auto;border:1px solid #000;}
+blockquote{padding:0 0 0 10px;margin-bottom:20px;margin-bottom:1.25rem;border:1px solid #87CEEB;border-radius:4px;}
+blockquote p{margin-bottom:2px;font-size:0.85em;font-weight:300;line-height:1.1;}
+blockquote small{display:block;line-height:1.625;color:#7e7e7e;}
+blockquote small:before{content:'¥2014 ¥00A0'}
+blockquote.pull-right{float:right;padding-right:15px;padding-right:0.9375rem;padding-left:15px;border:1px solid #87CEEB;border-radius:4px;}
+blockquote.pull-right p,blockquote.pull-right small{text-align:right;}
+blockquote.pull-right small:before{content:'';}
+blockquote.pull-right small:after{content:'¥00A0 ¥2014';}
+
