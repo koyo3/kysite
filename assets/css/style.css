@@ -198,6 +198,9 @@ p {
   box-shadow: 0;
   -webkit-box-shadow: 0;
   border-bottom: 0;
+  top:0;
+  width:160px;
+  height:100%;
 }
 .navbar-inner {
   padding-top: 15px;
