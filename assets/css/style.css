@@ -351,6 +351,7 @@ h6 {
 }
 .post .post-content img {
   max-width: 100%;
+  border:1px solid #000;
 }
 .post .post-content .mejs-container {
   margin-top: 7.5px;
@@ -656,3 +657,4 @@ footer {
   line-height: 10pt;
   padding: 7px;
 }
+h2 + hr {border:dashed #cacaca 1px;margin:20px 0;}
