@@ -255,7 +255,7 @@
           <div class="post">
             <h1>{{ page.content.split('\n')[0]|striptags }}</h1>
             <div class="post-content" data-type-cleanup="true">
-            {{ page.content }}
+            {{ page.content.split('\n')[1::]|join }}
             </div>
           </div>
 
