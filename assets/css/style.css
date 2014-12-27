@@ -332,7 +332,7 @@ h6 {
 }
 .post .post-content ul {
   padding: 7.5px 0 11.25px;
-  margin-left: 50px;
+  margin-left: 10px;
 }
 .post .post-content ul li {
   padding: 0;
@@ -442,7 +442,7 @@ h6 {
 }
 .post ul,
 .post ol {
-  margin-left: 40px;
+  margin-left: 10px;
 }
 .post ul li,
 .post ol li {
