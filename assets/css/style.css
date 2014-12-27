@@ -204,6 +204,7 @@ p {
   height:100%;
   float:none;
 }
+.row {margin-left:0;}
 .navbar-inner {
   position: fixed;
   top:0;
