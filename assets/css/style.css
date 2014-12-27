@@ -267,6 +267,8 @@ h6 {
 }
 .post .post-content {
   display: block;
+  margin-bottom:15px;
+  border:solid 1px #ccc;
 }
 .post .post-content ul,
 .post .post-content ol,
