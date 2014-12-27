@@ -169,7 +169,7 @@
         {% elif is_post %}
 
           <div class="post">
-            <h1>■　{{ post.content.split('\n')[0]|striptags }}</h1>
+            <h2>■　{{ post.content.split('\n')[0]|striptags }}</h2>
             <p class="muted">Posted on {{ post.created_at|format_date("%y/%m/%d") }}</p>
 
             <div class="post-content" data-type-cleanup="true">
@@ -253,7 +253,7 @@
         {% elif is_page %}
 
           <div class="post">
-            <h1>{{ page.content.split('\n')[0]|striptags }}</h1>
+            <h2>{{ page.content.split('\n')[0]|striptags }}</h2>
             <div class="post-content" data-type-cleanup="true">
             {{ page.content.split('\n')[1::]|join }}
             </div>
