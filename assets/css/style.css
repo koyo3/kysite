@@ -176,6 +176,7 @@
 /* used for styling post content in themes */
 body {
   font-family: 'Open Sans', helvetica, sans-serif;
+  padding-top: 60px;
 }
 a {
   color: #2eb18d;
@@ -262,7 +263,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 20px;
+  margin-top: 10px;
   font-weight: 400 !important;
 }
 .post .post-content {
@@ -342,11 +343,11 @@ h6 {
   list-style-type: decimal;
 }
 .post .post-content h1 {
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 .post .post-content h2,
 .post .post-content h3 {
-  padding-top: 15px;
+  padding-top: 10px;
 }
 .post .post-content img {
   max-width: 100%;
@@ -667,7 +668,5 @@ blockquote.pull-right p,blockquote.pull-right small{text-align:right;}
 blockquote.pull-right small:before{content:'';}
 blockquote.pull-right small:after{content:'¥00A0 ¥2014';}
 .muted{text-align: right;}
-body { padding-top: 60px;
-}
 
 
