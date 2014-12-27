@@ -6,7 +6,7 @@
       {% if is_login %}Login
       {% elif is_home %}{{ site.author }}
       {% elif is_tag %}{{ tag }}
-      {% elif post %}{{ post.title }}
+      {% elif post %}{{ post.content.split('\n')[0]|striptags }}
       {% endif %}
       | {{ site.name }}
     </title>
