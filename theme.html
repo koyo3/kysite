@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <title>
       {% if is_login %}Login
-      {% elif is_home %}{{ site.author }}
+      {% elif is_home %}TOP PAGE
       {% elif is_tag %}{{ tag }}
+      {% elif page %}{{ page.title }}
       {% elif post %}{{ post.content.split('\n')[0]|striptags }}
       {% endif %}
       | {{ site.name }}
