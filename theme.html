@@ -5,7 +5,7 @@
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <title>
       {% if is_login %}Login
-      {% elif is_home %}TOP PAGE
+      {% elif is_home %}Home
       {% elif is_tag %}{{ tag }}
       {% elif page %}{{ page.content.split('\n')[0]|striptags }}
       {% elif post %}{{ post.content.split('\n')[0]|striptags }}
