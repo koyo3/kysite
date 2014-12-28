@@ -289,20 +289,6 @@
             </ul>
             {% endif %}
 
-<script>
-  (function() {
-    var cx = '013366082964151259362:3manam4oxlm';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:search></gcse:search>
-
 {% if is_home %}
 {% for year, items in sort_by_year(posts) %}
   <h3>更新履歴</h3>
@@ -322,6 +308,20 @@
           </span>
         {% endif %}
       </div>
+
+<script>
+  (function() {
+    var cx = '013366082964151259362:3manam4oxlm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
 
       <div class="row">
         <div class="span10 offset1">
