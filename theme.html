@@ -157,8 +157,8 @@
           {% if not is_tag %}
           {% if pagination %}
           <div class="pagination">
-            {% if pagination.prev %}<a href="{{ pagination.prev }}" class="post-prev">&larr; View Previous Posts</a>{% endif %}
-            {% if pagination.next %}<a href="{{ pagination.next }}" class="post-next">View More Posts &rarr;</a>{% endif %}
+            {% if pagination.prev %}<a href="{{ pagination.prev }}" class="post-prev">&larr;</a>{% endif %}
+            {% if pagination.next %}<a href="{{ pagination.next }}" class="post-next">&rarr;</a>{% endif %}
           </div>
           {% endif %}
           {% endif %}
@@ -289,7 +289,7 @@
               {% endfor %}
             </ul>
             {% endif %}
-
+{#
             {% if is_home %}
             <div class="posts">
               {% for year, items in sort_by_year(posts) %}
@@ -307,6 +307,8 @@
               {% endfor %}
             </div>
             {% endif %}
+
+#}
 
           </span>
         {% endif %}
