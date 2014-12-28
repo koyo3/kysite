@@ -290,21 +290,23 @@
             </ul>
             {% endif %}
 
-{% if is_home %}
-{% for year, items in sort_by_year(posts) %}
-  <h3 class="posts">更新履歴</h3>
-  <ul class="posts">
-    {% for post in items %}
-      <li>
-          <time datetime="{{ post.created_at }}">{{ post.created_at.strftime("%y/%m/%d") }}</time> <a href="{{ post.permalink }}" class="permalink">{{ post.content.split('\n')[0]|striptags }}</a>
-          <div class="post-tags">
-            {{ post.tags|format_tags(humanize=True) }}
-          </div>
-      </li>
-    {% endfor %}
-  </ul>
-{% endfor %}
-{% endif %}
+            {% if is_home %}
+            <div class="posts">
+              {% for year, items in sort_by_year(posts) %}
+              <h3>更新履歴</h3>
+              <ul>
+                {% for post in items %}
+                <li>
+                  <time datetime="{{ post.created_at }}">{{ post.created_at.strftime("%y/%m/%d") }}</time> <a href="{{ post.permalink }}" class="permalink">{{ post.content.split('\n')[0]|striptags }}</a>
+                  <div class="post-tags">
+                    {{ post.tags|format_tags(humanize=True) }}
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            {% endfor %}
+            </div>
+            {% endif %}
 
           </span>
         {% endif %}
