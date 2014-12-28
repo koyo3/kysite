@@ -15,8 +15,6 @@
 
     {{ header_meta }}
 
-    <link href="{{ assets('css/style.css') }}" rel="stylesheet">
-
     <link href="http://postach.io/static/themes/minimalist-flat/css/minimalist-flat.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet" />
     <link href="{{ static('mediaelement/mediaelementplayer.css') }}" rel="stylesheet" />
@@ -172,16 +170,25 @@ text-decoration:none;}
                 {% endif %}
         </div>
 <!--新着-->
+{% if is_home %}
 <div class="recent"><p>■　新着記事一覧　■</p>
-{% if posts_recent %}
-    {% for post in posts_recent %}
-{#    {% if loop.index <= 5 %} #}
-    <a href="{{ post.permalink }}">{{ post.created_at|format_date("%y/%m/%d") }}  {{ post.content.split('\n')[0]|striptags }}</a>
-{#    {% endif %} #}
-    {% endfor %}
-{% endif %}
-</div>
 
+              {% for year, items in sort_by_year(posts) %}
+              <ul>
+                {% for post in items %}
+                <li>
+                  <time datetime="{{ post.created_at }}">{{ post.created_at.strftime("%y/%m/%d") }}</time> <a href="{{ post.permalink }}" class="permalink">{{ post.content.split('\n')[0]|striptags }}</a>
+                  <div class="post-tags">
+                    {{ post.tags|format_tags(humanize=True) }}
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endfor %}
+           
+</div>
+ {% endif %}
+ 
     </div>
 
     <div role="main" class="main">
