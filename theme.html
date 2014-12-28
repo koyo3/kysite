@@ -172,15 +172,12 @@ text-decoration:none;}
 <!--新着-->
 {% if is_home %}
 <div class="recent"><p>■　新着記事一覧　■</p>
-
               {% for year, items in sort_by_year(posts) %}
                 {% for post in items %}
-                  <time datetime="{{ post.created_at }}">{{ post.created_at.strftime("%y/%m/%d") }}</time>
-                  <a href="{{ post.permalink }}" class="permalink">{{ post.content.split('\n')[0]|striptags }}</a>
+                  <a href="{{ post.permalink }}" class="permalink"><time datetime="{{ post.created_at }}">{{ post.created_at.strftime("%y/%m/%d") }}</time>{{ post.content.split('\n')[0]|striptags }}</a>
                   <span class="post-tags">{{ post.tags|format_tags(humanize=True) }}</span>
                 {% endfor %}
               {% endfor %}
-           
 </div>
  {% endif %}
  
