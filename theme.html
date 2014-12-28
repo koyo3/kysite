@@ -35,7 +35,7 @@ td.name {display:hide;}
 #nav2 {line-height: 1.2;font-size:0.9em;margin:10px auto;padding:5px;}
 #nav2 a{color:#f1f1fc;transition:background .3s ease;border:0;padding:0 9px;}
 #nav2 a:hover{background:#4169e1;}
-div.recent{line-height: 1.2;font-size:0.9em;margin:10px auto;padding:2px;width:80%;background:rgba(0,0,40,0.4);border:double 4px #666;white-space: nowrap;overflow: hidden;}
+div.recent{line-height: 1.2;font-size:0.8em;margin:10px auto;padding:2px;width:80%;background:rgba(0,0,40,0.4);border:double 4px #666;white-space: nowrap;overflow: hidden;}
 div.recent a{display:block;}
 div.recent p{margin-top:2px;color:#667;font-size:0.9em;font-weight:lighter;text-align:center;}
 #tw{margin:2px 2em;}
@@ -93,9 +93,6 @@ section a:active,section a:hover{color:#1f7f5c;}
 section .title a{color:#88a5d3;}
 section .title a:active,section .title a:hover{color:#88b5d3;}
 
-#form {font-size:0.8em;}
-#form input,#form texteria {border:solid 1px #999;background-color:#ccc;color:#999;}
-
     article { {% if not is_tag %}border:2px solid #cce;padding:1rem;{% endif %}{% if is_tag %}height:100px;width:95px;{% endif %} }
     --></style>
 
@@ -115,7 +112,6 @@ section .title a:active,section .title a:hover{color:#88b5d3;}
 </head>
 <body>
 
-    <!-- I see you like to look at source code :) Me too! -->
     <header class="site-header">
         <h1 class="site-name"><a href="http://www.fureai.or.jp/~nataku/aiiro/">{{ site.name }}</a></h1>
     </header>
@@ -146,7 +142,7 @@ section .title a:active,section .title a:hover{color:#88b5d3;}
 <div class="recent"><p>■　新着記事一覧　■</p>
               {% for year, items in sort_by_year(posts) %}
                 {% for post in items %}
-                  <a href="{{ post.permalink }}" class="permalink"><time datetime="{{ post.created_at }}">{{ post.created_at.strftime("%y/%m/%d") }}</time>{{ post.content.split('\n')[0]|striptags }}</a>
+                  <a href="{{ post.permalink }}" class="permalink"><time datetime="{{ post.created_at }}">{{ post.created_at.strftime("%y/%m/%d") }}</time> {{ post.content.split('\n')[0]|striptags }}</a>
                   <span class="post-tags">{{ post.tags|format_tags(humanize=True) }}</span>
                 {% endfor %}
               {% endfor %}
