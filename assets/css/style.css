@@ -398,12 +398,12 @@ h6 {
   margin-top: 20px;
 }
 .post h1 {
-  font-size: 28px;
+  font-size: 24px;
   margin-top: 15px;
   font-weight: 300;
 }
 .post h2 {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 34px;
 }
 .post h3 {
@@ -668,5 +668,5 @@ blockquote.pull-right p,blockquote.pull-right small{text-align:right;}
 blockquote.pull-right small:before{content:'';}
 blockquote.pull-right small:after{content:'¥00A0 ¥2014';}
 .muted{text-align: right;}
-.posts {list-style-type:none;font-size:0.8em;margin:0;padding:0;}
-
+ul.posts {list-style-type:none;font-size:0.8em;margin:0;padding:0;}
+h3.posts {font-size:1em;}
