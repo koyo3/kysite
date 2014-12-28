@@ -63,7 +63,7 @@ footer.site-footer{clear:both;}
 .tags a{margin-top:1.5em;padding:0 4px;padding:0 0.25rem;display:inline-block;color:#f6f6f6;background-color:#777;text-decoration:none;font-size:11px;font-size:0.6875rem;-webkit-transition:all .2s ease-out;-moz-transition:all .2s ease-out;-o-transition:all .2s ease-out;transition:all .2s ease-out;}
 .tags a:active,.tags a:hover{color:#f6f6f6;background-color:#ccf;}
 
-section.posts{margin:0 ;list-style-type:none;padding:0 5px;}
+section.posts{margin-bottom:1.5em ;list-style-type:none;padding:0 5px;}
 section.posts .title{margin-bottom:10px;margin-bottom:0.625rem;}
 section.posts article.itembox {padding-bottom:30px;max-width:600px;}
 section.posts article.itembox .content:before,section.posts article.itembox .content:after{display:table;content:"";}
@@ -306,6 +306,7 @@ section .title a:active,section .title a:hover{color:#88b5d3;}
 
     <script src="{{ static('themes/minimalist-flat/js/responsive-nav.min.js') }}"></script>
     <script src="{{ static('themes/minimalist-flat/js/hideAddressBar.js') }}"></script>
+    <script>responsiveNav("#nav", { customToggle: "#toggle" });</script>
     <script src="{{ static('mediaelement/mediaelement-and-player.min.js') }}"></script>
     <script>
         $('audio').mediaelementplayer();
