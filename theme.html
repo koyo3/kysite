@@ -288,6 +288,23 @@
               {% endfor %}
             </ul>
             {% endif %}
+
+{% for year, items in sort_by_year(posts) %}
+  <h2>{{ year }}</h2>
+  <ul class="posts">
+    {% for post in items %}
+      <li>
+        <article itemscope itemtype="http://schema.org/Article">
+          <time datetime="{{ post.created_at }}">{{ post.created_at.strftime('%d %b') }}</time> <a href="{{ post.permalink }}" class="permalink">{{ post.title }}</a>
+          <div class="post-tags">
+            {{ post.tags|format_tags(humanize=True) }}
+          </div>
+        </article>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+
           </span>
         {% endif %}
       </div>
