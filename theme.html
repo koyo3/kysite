@@ -1,94 +1,26 @@
 <!DOCTYPE html>
-<html lang="ja" prefix="og: http://ogp.me/ns#">
-<head>
+<html prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#">
+  <head>
     <meta charset="utf-8">
-    <title>{% if is_home %}{{ site.author }}{% elif is_post %} {{ post.content.split('\n')[0]|striptags }} {% elif is_link %} {{ link.title }} {% elif is_tag %} {{ tag }} {% elif is_page %} {{ page.content.split('\n')[0]|striptags }} {% endif %} | {{ site.name }}</title>
-
-    <meta http-equiv="Expires" content=86400>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-
-    <meta name="description" content="{{ site.bio|striptags }} - {{ site.author }}" />
-    <meta name="copyright" content="Copyright (c) 2013 {{ site.author }}" />
-
-    <meta property="og:site_name" content="{{ site.name }}" />
-    {% if is_post %}
-    <meta property="article:published_time" content="{{ post.created_at }}" />
-    {% if post.tags %}
-        {% for tag in post.tags %}
-        <meta property="article:tag" content="{{ tag|format_tag(link=False, humanize=True) }}" />
-        {% endfor %}
-    {% endif %}
-    {% if post.photos %}
-    {% for photo in post.photos %}
-        {% if loop.index == 1 and photo %}
-        <meta property="og:image" content="{{ photo.width_75 }}" />
-        {% else %}
-        <meta property="og:image" content="{{ site.avatar }}" />
-        {% endif %}
-    {% endfor %}
-    {% endif %}
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{{ post.title }}" />
-    <meta property="og:url" content="{{ site.base_url }}{{ post.permalink }}" />
-    <meta property="og:description" content="{{ post.content|striptags|truncate(255)|e }}" />
-    {% elif is_page %}
-    <meta property="og:image" content="{{ site.avatar }}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="og:url" content="{{ site.base_url }}{{ page.permalink }}" />
-    <meta property="og:description" content="{{ page.content|striptags|truncate(255)|e }}" />
-    {% else %}
-    <meta property="og:image" content="{{ site.avatar }}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{ site.name }}" />
-    <meta property="og:url" content="{{ site.base_url }}" />
-    <meta property="og:description" content="{{ site.bio|striptags }}" />
-    {% endif %}
-    <meta name="google-site-verification" content="1BBjsLYOSLaiMhoCvaoAuEo8gwiB3ddfBAU1Rso_f5Q" />
     <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>
+      {% if is_login %}Login
+      {% elif is_home %}Home
+      {% elif is_tag %}{{ tag }}
+      {% elif page %}{{ page.content.split('\n')[0]|striptags }}
+      {% elif post %}{{ post.content.split('\n')[0]|striptags }}
+      {% endif %}
+      | {{ site.name }}
+    </title>
 
-{# <!--
-    <link rel="stylesheet" href="https://googledrive.com/host/0B0Pa01OngUdIZ1VvYkFvLUZEQ3M/postachcss.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="https://googledrive.com/host/0B0Pa01OngUdIS2xTR1hZRHhOZHc/thickbox.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="https://googledrive.com/host/0B0Pa01OngUdISW5BZVAyQ1lCUlU/thickbox.css" type="text/css" media="screen" />
-    <link href="{{ static('themes/minimalist-flat/css/minimalist-flat.css') }}" rel="stylesheet" />
---> #}
+    {{ header_meta }}
+
+    <link href="{{ assets('css/style.css') }}" rel="stylesheet">
+
     <link href="http://postach.io/static/themes/minimalist-flat/css/minimalist-flat.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet" />
     <link href="{{ static('mediaelement/mediaelementplayer.css') }}" rel="stylesheet" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-<script>
-$(document).ready(function() {
-	$(".navi2 h3").hover(function(){
-		$(this).css("cursor","pointer"); 
-	},function(){
-		$(this).css("cursor","default"); 
-		});
-	$(".navi2 ul").css("display","none");
-	$(".navi2 > h3").click(function(){
-		$(this).next().slideToggle("fast");
-$(this).toggleClass("active");
-		});
-});
-
-$(document).ready(function(){$("#content").jPaginate({cookies:false});});
-
-$(document).ready(function(){
-	$("ul.tabs").jTabs({content: ".tabs_content",cookies:true});
-});
-
-$("document").ready(function(){
-    $('iframe').load(function(){
-        if (typeof $(this).attr('height') == 'undefined') {
-            $(this).height(this.contentWindow.document.documentElement.scrollHeight+10);
-        }
-    });
-    $('iframe').triggerHandler('load');
-});
-</script>
     <style><!--
 .itembox{display:block;}
 body{font-size:0.85em;color:#232323;background-color: #447;background:-moz-linear-gradient(top,#5c5a62, #447);background: -webkit-gradient(linear, left top, left bottom, from(#5c5a62), to(#447));background-repeat:repeat-y;}
@@ -196,8 +128,23 @@ text-decoration:none;}
 
     article { {% if not is_tag %}border:2px solid #cce;padding:1rem;{% endif %}{% if is_tag %}height:100px;width:95px;{% endif %} }
     --></style>
+
+    {% if site.analytics %}
+      <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{ site.analytics }}']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+      </script>
+    {% endif %}
+
 </head>
 <body>
+
     <!-- I see you like to look at source code :) Me too! -->
     <header class="site-header">
         <h1 class="site-name"><a href="http://www.fureai.or.jp/~nataku/aiiro/">{{ site.name }}</a></h1>
@@ -209,7 +156,7 @@ text-decoration:none;}
             {% if pages %}
             {% for page in pages %}
               {% if page.title.find("memo") == -1 %}
-              <li><a href="{{ page.permalink }}">{{ page.content.split('\n')[0]|striptags }}</a></li>
+              <li><a href="{{ page.permalink }}" class="{{ set_active(page.permalink) }}">{{ page.content.split('\n')[0]|striptags }}</a></li>
               {% endif %}
             {% endfor %}
             {% endif %}
@@ -219,7 +166,7 @@ text-decoration:none;}
                 {% if site.tags %}
                         {% for tag in site.tags %}
                           {% if tag.name.find("category") == -1 %}
-                            <a href="/tag/{{ tag.name }}">#{{ tag.name}} ({{ tag.count }})</a>
+                            <a href="/tag/{{ tag.name }}">#{{ tag.name}})</a>
                           {% endif  %}
                         {% endfor %}
                 {% endif %}
@@ -274,7 +221,6 @@ text-decoration:none;}
                 </article>
                 {% endif %}
 
-{# <!--メイン  --> #}
             {% if not is_tag %}
                 <article itemscope itemtype="http://schema.org/Article" class="itembox ">
                 <header class="title">
@@ -380,26 +326,7 @@ text-decoration:none;}
             <div class="post">
                 <h2>{{ page.content.split('\n')[0]|striptags }}</h2>
                 <hr />
-
-{% if page.title in ("Note") %}
-	<div class="sitelog">
-		<ul class="tabs"><li class="active"><a href="#">現行</a></li><li><a href="#">旧：爆転＋その他</a></li><li><a href="#">旧：MFB</a></li></ul>
-<div class="clear"></div>
-		<div class="tabs_content">
-			{{ page.content.split('\n')[1::]|join|replace('<p>--div tab1</p>','<div id="tab1" class="navi2">')|replace('<p>--div tab2</p>','<div id="tab2" class="navi2">')|replace('<p>--div tab3</p>','<div id="tab3" class="navi2">')|replace('<p>div--</p>','</div>') }}
-		</div>
-	</div>
-{% elif page.title in ("memo-link") %}
-	<iframe id="iframein" src="http://www.fureai.or.jp/~nataku/aiiro/link/link.html" seamless>
-	このブラウザではフレームがサポートされいていません。<a href="http://www.fureai.or.jp/~nataku/aiiro/link/link.html">リンクページ</a>
-	</iframe>
-{% elif page.title in ("memo-dialy") %}
-	<iframe id="iframein" src="http://www.fureai.or.jp/~nataku/aiiro/cgi/bbscomet/index.html" seamless>
-	このブラウザではフレームがサポートされいていません。<a href="http://www.fureai.or.jp/~nataku/aiiro/cgi/bbscomet/index.html">日記へ</a>
-	</iframe>
-{% else %}
                 {{ page.content.split('\n')[1::]|join }}
-{% endif %}
             </div>
             {% endif %}
 
@@ -412,25 +339,10 @@ text-decoration:none;}
 
     <script src="{{ static('themes/minimalist-flat/js/responsive-nav.min.js') }}"></script>
     <script src="{{ static('themes/minimalist-flat/js/hideAddressBar.js') }}"></script>
-    <script>responsiveNav("#nav", { customToggle: "#toggle" });</script>
     <script src="{{ static('mediaelement/mediaelement-and-player.min.js') }}"></script>
-<script src="https://googledrive.com/host/0B0Pa01OngUdINTJXZzZERlVLYVk/jPaginate.js"></script>
     <script>
         $('audio').mediaelementplayer();
     </script>
-
-    {% if site.analytics %}
-    <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '{{ site.analytics }}']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-    {% endif %}
 
 </body>
 </html>
