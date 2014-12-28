@@ -289,8 +289,9 @@
             </ul>
             {% endif %}
 
+{% if is_home %}
 {% for year, items in sort_by_year(posts) %}
-  <h3>{{ year }}</h3>
+  <h3>更新履歴</h3>
   <ul class="posts">
     {% for post in items %}
       <li>
@@ -302,6 +303,7 @@
     {% endfor %}
   </ul>
 {% endfor %}
+{% endif %}
 
           </span>
         {% endif %}
