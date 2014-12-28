@@ -668,5 +668,5 @@ blockquote.pull-right p,blockquote.pull-right small{text-align:right;}
 blockquote.pull-right small:before{content:'';}
 blockquote.pull-right small:after{content:'¥00A0 ¥2014';}
 .muted{text-align: right;}
-
+.posts {list-style-type:none;font-size:0.8em}
 
