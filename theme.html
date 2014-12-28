@@ -174,16 +174,11 @@ text-decoration:none;}
 <div class="recent"><p>■　新着記事一覧　■</p>
 
               {% for year, items in sort_by_year(posts) %}
-              <ul>
                 {% for post in items %}
-                <li>
-                  <time datetime="{{ post.created_at }}">{{ post.created_at.strftime("%y/%m/%d") }}</time> <a href="{{ post.permalink }}" class="permalink">{{ post.content.split('\n')[0]|striptags }}</a>
-                  <div class="post-tags">
-                    {{ post.tags|format_tags(humanize=True) }}
-                  </div>
-                </li>
+                  <time datetime="{{ post.created_at }}">{{ post.created_at.strftime("%y/%m/%d") }}</time>
+                  <a href="{{ post.permalink }}" class="permalink">{{ post.content.split('\n')[0]|striptags }}</a>
+                  <span class="post-tags">{{ post.tags|format_tags(humanize=True) }}</span>
                 {% endfor %}
-              </ul>
               {% endfor %}
            
 </div>
