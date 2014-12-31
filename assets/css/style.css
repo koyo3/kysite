@@ -1787,4 +1787,4 @@ section a{color:#29a87a;}
 section a:active,section a:hover{color:#1f7f5c;}
 section .title a{color:#88a5d3;}
 section .title a:active,section .title a:hover{color:#88b5d3;}
-article { {% if not is_tag %}margin-bottom:1.5em; border:2px solid #cce;padding:1rem;{% endif %}{% if is_tag %}height:100px;width:95px;{% endif %} }
+
